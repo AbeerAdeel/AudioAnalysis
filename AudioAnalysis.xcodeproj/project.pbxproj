@@ -11,6 +11,7 @@
 		A62F7C8425AAC982006F7975 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62F7C8325AAC982006F7975 /* ContentView.swift */; };
 		A62F7C8625AAC987006F7975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62F7C8525AAC987006F7975 /* Assets.xcassets */; };
 		A62F7C8925AAC987006F7975 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62F7C8825AAC987006F7975 /* Preview Assets.xcassets */; };
+		A682D08525AFC1D70038FB1C /* AnalysisRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A682D08425AFC1D70038FB1C /* AnalysisRow.swift */; };
 		A6D5EEAD25ABF360008EE9D1 /* SwiftUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D5EEAC25ABF360008EE9D1 /* SwiftUISlider.swift */; };
 		A6D5EEB225ABF465008EE9D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D5EEB125ABF465008EE9D1 /* Color.swift */; };
 		A6D5EEB525ABF492008EE9D1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D5EEB425ABF492008EE9D1 /* UIColor.swift */; };
@@ -26,6 +27,7 @@
 		A62F7C8525AAC987006F7975 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A62F7C8825AAC987006F7975 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A62F7C8A25AAC987006F7975 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A682D08425AFC1D70038FB1C /* AnalysisRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisRow.swift; sourceTree = "<group>"; };
 		A6D5EEAC25ABF360008EE9D1 /* SwiftUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISlider.swift; sourceTree = "<group>"; };
 		A6D5EEB125ABF465008EE9D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A6D5EEB425ABF492008EE9D1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				A6D5EEB725ABF56E008EE9D1 /* ImageBackground.swift */,
 				A6D5EEBD25ABF809008EE9D1 /* AnalysisList.swift */,
 				A6D5EEC125ABF985008EE9D1 /* BottomBar.swift */,
+				A682D08425AFC1D70038FB1C /* AnalysisRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				A62F7C8225AAC982006F7975 /* AudioAnalysisApp.swift in Sources */,
 				A6D5EEAD25ABF360008EE9D1 /* SwiftUISlider.swift in Sources */,
 				A6D5EEC225ABF985008EE9D1 /* BottomBar.swift in Sources */,
+				A682D08525AFC1D70038FB1C /* AnalysisRow.swift in Sources */,
 				A6D5EEB525ABF492008EE9D1 /* UIColor.swift in Sources */,
 				A6D5EEB825ABF56E008EE9D1 /* ImageBackground.swift in Sources */,
 				A6D5EEBE25ABF809008EE9D1 /* AnalysisList.swift in Sources */,

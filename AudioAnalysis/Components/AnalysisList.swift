@@ -8,103 +8,57 @@
 import Foundation
 import SwiftUI
 
+struct Response: Codable {
+    var track: Track
+}
+
+struct Track: Codable {
+    var start_of_fade_out: Float
+    var end_of_fade_in: Float
+    var loudness: Float
+    var tempo: Float
+    var time_signature: Float
+    var key: Int
+    var mode: Int
+}
+
+
 struct AnalysisList: View {
+    @State var result: Track = Track(start_of_fade_out: 0, end_of_fade_in: 0, loudness: 0, tempo: 0, time_signature: 0, key: 0, mode: 0)
     var font: String = "Avenir"
     
     var body: some View {
         List {
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5) {
-                Text("Start of Fade Out")
-                    .font(Font.custom(font, size: 16.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0xF50C5F))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Text("510.05")
-                    .font(Font.custom(font, size: 14.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0x7A7A7A))
-                    .multilineTextAlignment(.leading)
-            }
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5) {
-                Text("End of Fade In")
-                    .font(Font.custom(font, size: 16.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0xF50C5F))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Text("0.4523")
-                    .font(Font.custom(font, size: 14.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0x7A7A7A))
-                    .multilineTextAlignment(.leading)
-            }
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5) {
-                Text("Loudness")
-                    .font(Font.custom(font, size: 16.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0xF50C5F))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Text("-10.422")
-                    .font(Font.custom(font, size: 14.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0x7A7A7A))
-                    .multilineTextAlignment(.leading)
-            }
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5) {
-                Text("Tempo")
-                    .font(Font.custom(font, size: 16.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0xF50C5F))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Text("113.066")
-                    .font(Font.custom(font, size: 14.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0x7A7A7A))
-                    .multilineTextAlignment(.leading)
-            }
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5) {
-                Text("Time Signature")
-                    .font(Font.custom(font, size: 16.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0xF50C5F))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Text("4")
-                    .font(Font.custom(font, size: 14.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0x7A7A7A))
-                    .multilineTextAlignment(.leading)
-            }
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5) {
-                Text("Key")
-                    .font(Font.custom(font, size: 16.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0xF50C5F))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Text("10")
-                    .font(Font.custom(font, size: 14.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0x7A7A7A))
-                    .multilineTextAlignment(.leading)
-            }
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5) {
-                Text("Mode")
-                    .font(Font.custom(font, size: 16.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0xF50C5F))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Text("1")
-                    .font(Font.custom(font, size: 14.0))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: 0x7A7A7A))
-                    .multilineTextAlignment(.leading)
-            }
+            AnalysisRow(rowTitle: "Start of Fade Out", rowValue: String(result.start_of_fade_out))
+            AnalysisRow(rowTitle: "End of Fade In", rowValue: String(result.end_of_fade_in))
+            AnalysisRow(rowTitle: "Loudness", rowValue: String(result.loudness))
+            AnalysisRow(rowTitle: "Tempo", rowValue: String(result.tempo))
+            AnalysisRow(rowTitle: "Time Signature", rowValue: String(result.time_signature))
+            AnalysisRow(rowTitle: "Key", rowValue: String(result.key))
+            AnalysisRow(rowTitle: "Mode", rowValue: String(result.mode))
         }
         .listStyle(PlainListStyle())
+        .onAppear(perform: loadData)
+        
+    }
+    
+    
+    func loadData() {
+        guard let url = URL(string: "http://localhost:8080/audio-analysis/6eo04yKCNmMegAvdQPEhm8") else {
+            print("Invalid URL")
+            return
+        }
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) {data, response, error in
+            if let data = data {
+                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.result = decodedResponse.track
+                    }
+                    return
+                }
+            }
+            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+        }.resume()
     }
 }

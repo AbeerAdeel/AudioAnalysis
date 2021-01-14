@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ImageBackground(song: "Doomsday", artist: "MF Doofm", image: "doom")
+            ImageBackground(song: "Doomsday", artist: "MF Doommm", image: "doom")
             AnalysisList()
             BottomBar()
             .edgesIgnoringSafeArea(.bottom)
