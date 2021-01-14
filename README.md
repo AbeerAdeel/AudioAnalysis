@@ -9,10 +9,9 @@ Run this command to start the api from Go
 ```bash
 go run main.go
 ```
-`
 
 ## Screenshots
-<img src="screenshots/demo.png" alt="drawing" width="200"/> &nbsp;
+<img src="Screenshots/demo.png" alt="drawing" width="200"/> &nbsp;
 
 
 
