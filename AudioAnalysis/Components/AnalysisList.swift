@@ -25,6 +25,7 @@ struct Track: Codable {
 
 struct AnalysisList: View {
     @State var result: Track = Track(start_of_fade_out: 0, end_of_fade_in: 0, loudness: 0, tempo: 0, time_signature: 0, key: 0, mode: 0)
+    var id: String
     var font: String = "Avenir"
     
     var body: some View {
@@ -44,7 +45,8 @@ struct AnalysisList: View {
     
     
     func loadData() {
-        guard let url = URL(string: "http://localhost:8080/audio-analysis/6eo04yKCNmMegAvdQPEhm8") else {
+        let urlString: String = "http://localhost:8080/audio-analysis/" + self.id
+        guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
         }

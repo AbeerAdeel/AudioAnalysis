@@ -17,8 +17,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ImageBackground(song: "Doomsday", artist: "MF Doommm", image: "doom")
-            AnalysisList()
+            // TODO get these values from search api created from go and hook it up
+            ImageBackground(song: "What's Happening Brother", artist: "Marvin Gaye", image: "marvin")
+            AnalysisList(id: "6eo04yKCNmMegAvdQPEhm8")
             BottomBar()
             .edgesIgnoringSafeArea(.bottom)
         }

@@ -24,7 +24,7 @@ struct ImageBackground: View {
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
             .overlay(
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
-                    HStack(alignment: .center, spacing: 30) {
+                    HStack(alignment: .center, spacing: 15) {
                         Spacer()
                         Button(action: {
                             print("Back button was tapped")
